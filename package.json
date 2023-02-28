@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "populate": "npx jest --config api/jest.config.js",
+    "populate": "npx jest --config api/jest.config.js --testTimeout 120000",
     "e2e:headed": "npx playwright test --headed",
     "e2e": "npm run e2e:chrome --headed",
     "e2e:chrome": "npm run e2e:headed -- --project chromium",

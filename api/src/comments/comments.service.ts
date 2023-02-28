@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { BaseService } from '../base.service'
 import { Repository } from 'typeorm'
-import { UserDto } from '@app/models'
-import { User } from './user.entity'
+import { CommentDto } from '@app/models'
+import { Comment } from './comment.entity'
 
 @Injectable()
-export class UsersService extends BaseService<User, UserDto> {
+export class CommentsService extends BaseService<Comment, CommentDto> {
   constructor(
-    @InjectRepository(User)
-    repo: Repository<User>,
+    @InjectRepository(Comment)
+    repo: Repository<Comment>,
   ) { super(repo)}
 }

@@ -1,19 +1,19 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common'
 import { DeepPartial } from 'typeorm'
 import { BaseController } from '../base.controller'
-import { CreateUserDto } from '@app/models'
+import { UserDto } from '@app/models'
 import { User } from './user.entity'
 import { UsersService } from './users.service'
 
 @Controller('users')
-export class UsersController extends BaseController<UsersService, User, CreateUserDto> {
+export class UsersController extends BaseController<UsersService, User, UserDto> {
   constructor(usersService: UsersService) {
     super(usersService)
   }
 
   @Post()
-  async create(@Body() createUserDto: CreateUserDto | CreateUserDto[]): Promise<DeepPartial<User> | DeepPartial<User>[]> {
-    return super.create(createUserDto)
+  async create(@Body() userDto: UserDto | UserDto[]): Promise<DeepPartial<User> | DeepPartial<User>[]> {
+    return super.create(userDto)
   }
 
   @Get()

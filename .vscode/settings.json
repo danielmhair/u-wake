@@ -1,0 +1,18 @@
+{
+  "eslint.debug": true,
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown",
+    "angular"
+  ],
+  "jestrunner.changeDirectoryToWorkspaceRoot": false,
+  "jestrunner.projectPath": "/workspace/u-wake",
+  "jestrunner.runOptions": ["--testTimeout=100000000"]
+}

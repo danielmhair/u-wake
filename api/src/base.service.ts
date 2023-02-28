@@ -1,38 +1,38 @@
 import { DeepPartial, FindManyOptions, FindOneOptions, Repository } from 'typeorm'
 
 export class BaseService<T, CreateDto> {
-  constructor(protected readonly usersRepository: Repository<T>) {}
+  constructor(public readonly repo: Repository<T>) {}
 
-  async create(createUserDto: CreateDto): Promise<DeepPartial<T>[]> {
-    return this.usersRepository.save(createUserDto as any)
+  async create(createDto: CreateDto): Promise<DeepPartial<T>> {
+    return this.repo.save(createDto as any)
   }
 
-  async createMany(createUserDto: CreateDto[]): Promise<T[]> {
-    return this.usersRepository.create(createUserDto as any)
+  async createMany(createDto: CreateDto[]): Promise<T[]> {
+    return this.repo.create(createDto as any)
   }
 
   async getAll(options?: FindManyOptions<T>): Promise<T[]> {
-    return this.usersRepository.find(options)
+    return this.repo.find(options)
   }
 
   async getById(id: number): Promise<T> {
-    return this.usersRepository.findOneBy({ id: id } as any)
+    return this.repo.findOneBy({ id: id } as any)
   }
 
   async getOne(options?: FindOneOptions<T>): Promise<T> {
-    return this.usersRepository.findOne(options)
+    return this.repo.findOne(options)
   }
 
   async update(id: number, user: DeepPartial<T>): Promise<T> {
-    return this.usersRepository.save({ id, ...user })
+    return this.repo.save({ id, ...user })
   }
 
   async deleteById(id: string): Promise<void> {
-    await this.usersRepository.delete(id)
+    await this.repo.delete(id)
   }
 
   async deleteWhere(options?: Pick<FindOneOptions<T>, 'where'>): Promise<void> {
-    const users = await this.usersRepository.find({ where: options.where, select: ['id'] as any[] })
-    await this.usersRepository.remove(users)
+    const users = await this.repo.find({ where: options.where, select: ['id'] as any[] })
+    await this.repo.remove(users)
   }
 }

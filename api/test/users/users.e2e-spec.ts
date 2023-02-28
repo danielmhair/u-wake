@@ -3,7 +3,7 @@ import { INestApplication } from '@nestjs/common'
 import * as request from 'supertest'
 import { UsersModule } from '../../src/users/users.module'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { CreateUserDto } from '../../src/users/dto/create-user.dto'
+import { UserDto } from '../../../app/libs/models/src/lib/user.dto'
 
 describe('Users - /users (e2e)', () => {
   const users = {
@@ -39,7 +39,7 @@ describe('Users - /users (e2e)', () => {
   it('Create [POST /users]', () => {
     return request(app.getHttpServer())
       .post('/users')
-      .send(users as CreateUserDto)
+      .send(users as UserDto)
       .expect(201)
       .then(({ body }) => {
         expect(body).toEqual(users)

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { environments } from 'apps/app/src/environments/environments';
 import { Observable } from 'rxjs';
-import { CreateUserDto } from '@app/models'
+import { UserDto } from '@app/models'
 
 @Component({
   selector: 'app-home',
@@ -10,10 +10,10 @@ import { CreateUserDto } from '@app/models'
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public result: Observable<CreateUserDto[]> | null = null
+  public result: Observable<UserDto[]> | null = null
   constructor(private http: HttpClient) {}
 
   async ngOnInit() {
-    this.result = this.http.get<CreateUserDto[]>(`${environments.API_URL}/users`)
+    this.result = this.http.get<UserDto[]>(`${environments.API_URL}/users`)
   }
 }

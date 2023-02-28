@@ -5,10 +5,10 @@ import { BaseService } from './base.service'
 export class BaseController<ServiceT extends BaseService<T, CreateDto>, T, CreateDto = T> {
   constructor(private readonly model: ServiceT) {}
 
-  async create(createUserDto: CreateDto | CreateDto[]): Promise<DeepPartial<T> | DeepPartial<T>[]> {
-    return Array.isArray(createUserDto)
-      ? await this.model.createMany(createUserDto as CreateDto[])
-      : await this.model.create(createUserDto as CreateDto)
+  async create(createDto: CreateDto | CreateDto[]): Promise<DeepPartial<T> | DeepPartial<T>[]> {
+    return Array.isArray(createDto)
+      ? await this.model.createMany(createDto as CreateDto[])
+      : await this.model.create(createDto as CreateDto)
   }
 
   async getAll(options?: FindManyOptions<T>): Promise<T[]> {
