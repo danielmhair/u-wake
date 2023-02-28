@@ -5,10 +5,10 @@ import { BaseController } from '../base.controller'
 import { UserFilter } from './user-filter.entity'
 import { UserFiltersService } from './user-filters.service'
 
-@Controller('users-filters')
+@Controller('user-filters')
 export class UserFiltersController extends BaseController<UserFiltersService, UserFilter, UserFilterDto> {
-  constructor(usersService: UserFiltersService) {
-    super(usersService)
+  constructor(userFilters: UserFiltersService) {
+    super(userFilters)
   }
 
   @Post()

@@ -5,10 +5,10 @@ import { TaskDto } from '@app/models'
 import { Task } from './task.entity'
 import { TasksService } from './tasks.service'
 
-@Controller('projects')
+@Controller('tasks')
 export class TasksController extends BaseController<TasksService, Task, TaskDto> {
-  constructor(projectsService: TasksService) {
-    super(projectsService)
+  constructor(tasksService: TasksService) {
+    super(tasksService)
   }
 
   @Post()

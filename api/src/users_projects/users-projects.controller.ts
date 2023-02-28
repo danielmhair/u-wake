@@ -7,8 +7,8 @@ import { UsersProjectsService } from './users-projects.service'
 
 @Controller('users-projects')
 export class UsersProjectsController extends BaseController<UsersProjectsService, UserProject, UserProjectDto> {
-  constructor(usersService: UsersProjectsService) {
-    super(usersService)
+  constructor(usersProjectsService: UsersProjectsService) {
+    super(usersProjectsService)
   }
 
   @Post()

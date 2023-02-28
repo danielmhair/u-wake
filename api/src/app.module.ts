@@ -1,11 +1,14 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { CommentsModule } from './comments/comments.module'
+import { LabelsModule } from './labels/labels.module'
+import { LabelsTasksModule } from './labels_tasks/labels-tasks.module'
+import { OwnersTasksModule } from './owners_tasks/owners-tasks.module'
 import { PrioritiesModule } from './priorities/priorities.module'
 import { ProjectsModule } from './projects/projects.module'
 import { TasksModule } from './tasks/tasks.module'
 import { UsersModule } from './users/users.module'
-import { UsersFiltersModule } from './users_filters/user-filters.module'
+import { UsersFiltersModule } from './user_filters/user-filters.module'
 import { UsersProjectsModule } from './users_projects/users-projects.module'
 import { UsersSettingsModule } from './users_settings/users_settings.module'
 
@@ -22,14 +25,17 @@ import { UsersSettingsModule } from './users_settings/users_settings.module'
       autoLoadEntities: true,
       synchronize: true,
     }),
-    UsersModule,
+    CommentsModule,
+    LabelsModule,
+    LabelsTasksModule,
+    OwnersTasksModule,
+    PrioritiesModule,
     ProjectsModule,
+    TasksModule,
+    UsersModule,
+    UsersFiltersModule,
     UsersProjectsModule,
     UsersSettingsModule,
-    UsersFiltersModule,
-    PrioritiesModule,
-    TasksModule,
-    CommentsModule,
   ],
 })
 export class AppModule {}
