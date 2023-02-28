@@ -1,3 +1,48 @@
 app-login {
   width: 100%;
+
+  .click-here-img {
+    position: absolute;
+    right: 130px;
+    width: 560px;
+    transition: top 2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      rotate: -20deg;
+      width: 200px;
+    }
+
+    p {
+      font-family: cursive;
+      font-weight: 100;
+      font-size: 40px;
+      color: black;
+      padding-right: 20px;
+    }
+  }
+
+  &.has-credential-container {
+    .click-here-img {
+      top: 170px;
+    }
+  }
+
+  &:not(.has-credential-container) {
+    .click-here-img {
+      top: 30px;
+    }
+  }
+
+  .login-icon {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    font-size: 25vw;
+  }
 }
+
