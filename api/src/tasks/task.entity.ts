@@ -22,7 +22,7 @@ export class Task {
 
   @OneToOne(() => Task, task => task.id)
   @JoinColumn({ name: 'parent_id' })
-  task: Task
+  parent: Task
 
   @Column()
   parent_id: number
