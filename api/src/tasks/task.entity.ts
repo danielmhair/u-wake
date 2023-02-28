@@ -1,7 +1,6 @@
-import { Priority } from 'src/priorities/priority.entity'
-import { Project } from 'src/projects/project.entity'
-import { User } from 'src/users/user.entity'
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Priority } from '../priorities/priority.entity'
+import { Project } from '../projects/project.entity'
 
 @Entity({ name: 'tasks' })
 export class Task {

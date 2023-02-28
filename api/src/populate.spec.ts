@@ -38,5 +38,7 @@ describe('Postgres DB', () => {
     await usersProjectsService.create({ user_id: dan.id, project_id: project1.id })
     await usersProjectsService.create({ user_id: dan.id, project_id: project2.id })
     await usersProjectsService.create({ user_id: mark.id, project_id: project3.id })
+
+    // TODO: Add the rest of the models so that we know that they are all working as expected
   })
 })

@@ -1,4 +1,4 @@
-import { Task } from 'src/tasks/task.entity'
+import { Task } from '../tasks/task.entity'
 import { Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm'
 import { User } from '../users/user.entity'
 

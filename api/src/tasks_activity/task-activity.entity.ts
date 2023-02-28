@@ -1,5 +1,5 @@
-import { Task } from 'src/tasks/task.entity'
 import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm'
+import { Task } from '../tasks/task.entity'
 import { User } from '../users/user.entity'
 
 @Entity({ name: 'tasks_activity' })
