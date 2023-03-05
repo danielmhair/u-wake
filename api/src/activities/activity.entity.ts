@@ -2,14 +2,10 @@ import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm'
 import { Task } from '../tasks/task.entity'
 import { User } from '../users/user.entity'
 
-@Entity({ name: 'tasks_activity' })
-export class TaskActivityItem {
-  @OneToMany(() => Task, task => task.id)
-  @JoinColumn({ name: 'task_id' })
-  task: Task
-
+@Entity({ name: 'activities' })
+export class Activity {
   @PrimaryColumn()
-  task_id: number
+  action_id: number
 
   @OneToMany(() => User, owner => owner.id)
   @JoinColumn({ name: 'owner_id' })

@@ -11,6 +11,7 @@ import { UsersModule } from './users/users.module'
 import { UsersFiltersModule } from './user_filters/user-filters.module'
 import { UsersProjectsModule } from './users_projects/users-projects.module'
 import { UsersSettingsModule } from './users_settings/users_settings.module'
+import { ActivitiesModule } from './activities/activities.module'
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { UsersSettingsModule } from './users_settings/users_settings.module'
     UsersFiltersModule,
     UsersProjectsModule,
     UsersSettingsModule,
+    ActivitiesModule,
   ],
 })
 export class AppModule {}

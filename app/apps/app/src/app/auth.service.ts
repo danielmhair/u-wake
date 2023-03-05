@@ -35,6 +35,8 @@ export class AuthService implements CanActivate, CanActivateChild, OnDestroy {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _route: ActivatedRouteSnapshot, _state: RouterStateSnapshot,
   ): Promise<boolean> {
+    // TODO: REMOVE return true
+    return true
     try {
       if (!this.loggedIn) {
         this.router.navigate(['/auth/login'])

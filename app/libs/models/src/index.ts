@@ -9,6 +9,6 @@ export * from './lib/user-project.dto'
 export * from './lib/user-settings.dto'
 export * from './lib/user.dto'
 export * from './lib/owner-task.dto'
-export * from './lib/task-activity.dto'
+export * from './lib/activity.dto'
 export * from './lib/reminder.dto'
 
