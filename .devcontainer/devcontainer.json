@@ -4,7 +4,12 @@
   "name": "Existing Dockerfile",
   "build": {
     "context": "..",
-    "dockerfile": "./.codespaces.Dockerfile"
+    "dockerfile": "./.codespaces.Dockerfile",
+    "args": {
+      "VNC_PASSWORD": "password",
+      "VNC_GEOMETRY": "1600x900",
+      "VNC_DEPTH": "24"
+    }
   },
   "onCreateCommand": {
     "rebase": "git config --global pull.rebase false",
@@ -17,12 +22,13 @@
     "sql": "psql -h 0.0.0.0 -p 5432 -U postgres -W postgres",
     "db": "docker compose up",
     "api": "npm run populate && cd api && npm start",
-    "app": "cd app && npm start"
+    "app": "cd app && npm start",
+    "vnc:run": "docker run -it -p 5901:5901 -e VNC_PASSWORD=$VNC_PASSWORD -e VNC_GEOMETRY=$VNC_GEOMETRY -e VNC_DEPTH=$VNC_DEPTH my-desktop-environment"
   },
   "forwardPorts": [
     "api:3000",
     "app:4200",
     "postgres:5432",
-    "vnc:6080"
+    "vnc:5901"
   ]
 }
