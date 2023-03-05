@@ -14,8 +14,11 @@ RUN apt-get update && \
 
 # Set VNC password
 RUN mkdir -p $HOME/.vnc && \
-    echo "password" | vncpasswd -f > $HOME/.vnc/passwd && \
+    echo "$VNC_PASSWORD" | vncpasswd -f > $HOME/.vnc/passwd && \
     chmod 600 $HOME/.vnc/passwd
 
+# Expose VNC port
+EXPOSE 5901
+
 # Start VNC server
-ENTRYPOINT ["tightvncserver", "-geometry", "1600x900", "-depth", "24"]
+ENTRYPOINT ["tightvncserver", "-geometry", "$VNC_GEOMETRY", "-depth", "$VNC_DEPTH"]
