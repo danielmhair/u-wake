@@ -1,15 +1,21 @@
-FROM ghcr.io/jonico/codespace-with-vnc-chrome-and-ps:latest
+FROM ubuntu:20.04
 
-VOLUME [ "/var/lib/docker" ]
+# Install desktop environment
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y xfce4 xfce4-terminal && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
+# Install VNC server
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y tightvncserver && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-ENV DBUS_SESSION_BUS_ADDRESS="autolaunch:" \
-	VNC_RESOLUTION="1440x768x16" \
-	VNC_DPI="96" \
-	VNC_PORT="5901" \
-	NOVNC_PORT="6080" \
-	DISPLAY=":1" \
-	LANG="en_US.UTF-8" \
-	LANGUAGE="en_US.UTF-8"
-ENTRYPOINT ["/usr/local/share/desktop-init.sh", "/usr/local/share/docker-init.sh" ]
-CMD ["sleep", "infinity"]
+# Set VNC password
+RUN mkdir -p $HOME/.vnc && \
+    echo "password" | vncpasswd -f > $HOME/.vnc/passwd && \
+    chmod 600 $HOME/.vnc/passwd
+
+# Start VNC server
+ENTRYPOINT ["tightvncserver", "-geometry", "1600x900", "-depth", "24"]
