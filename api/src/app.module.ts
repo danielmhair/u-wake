@@ -21,7 +21,7 @@ import { ActivitiesModule } from './activities/activities.module'
       port: 5432,
       username: 'postgres',
       password: 'postgres',
-      database: 'uwake',
+      database: 'postgres',
       // migrations: [PopulateDataExample1674432771960],
       autoLoadEntities: true,
       synchronize: true,
