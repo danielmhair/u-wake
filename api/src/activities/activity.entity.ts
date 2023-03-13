@@ -7,7 +7,7 @@ export class Activity {
   @PrimaryColumn()
   action_id: number
 
-  @OneToMany(() => User, owner => owner.id)
+  @OneToMany(() => User, owner => owner.id, { cascade: true })
   @JoinColumn({ name: 'owner_id' })
   user: User
 
@@ -17,6 +17,6 @@ export class Activity {
   @Column({ type: 'date' })
   public date: Date = null
 
-  @Column()
+  @Column({ type: 'varchar' })
   public action = ''
 }

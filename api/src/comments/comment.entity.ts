@@ -12,7 +12,7 @@ export class Comment {
   @CreateDateColumn()
   created: Date
 
-  @ManyToOne(() => Task, task => task.id)
+  @ManyToOne(() => Task, task => task.id, { cascade: true })
   @JoinColumn({ name: 'task_id' })
   task: Task
 

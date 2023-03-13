@@ -12,6 +12,7 @@ import { UsersFiltersModule } from './user_filters/user-filters.module'
 import { UsersProjectsModule } from './users_projects/users-projects.module'
 import { UsersSettingsModule } from './users_settings/users_settings.module'
 import { ActivitiesModule } from './activities/activities.module'
+import { RemindersModule } from './reminders/reminders.module'
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { ActivitiesModule } from './activities/activities.module'
     UsersProjectsModule,
     UsersSettingsModule,
     ActivitiesModule,
+    RemindersModule,
   ],
 })
 export class AppModule {}

@@ -6,7 +6,7 @@ export class Reminder {
   @PrimaryGeneratedColumn()
   id: number
 
-  @OneToMany(() => Task, task => task.id)
+  @OneToMany(() => Task, task => task.id, { cascade: true })
   @JoinColumn({ name: 'task_id' })
   task: Task
 

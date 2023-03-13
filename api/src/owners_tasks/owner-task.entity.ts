@@ -4,14 +4,14 @@ import { User } from '../users/user.entity'
 
 @Entity({ name: 'owners_tasks' })
 export class OwnerTask {
-  @OneToMany(() => Task, task => task.id)
+  @OneToMany(() => Task, task => task.id, { cascade: true })
   @JoinColumn({ name: 'task_id' })
   task: Task
 
   @PrimaryColumn()
   task_id: number
 
-  @OneToMany(() => User, owner => owner.id)
+  @OneToMany(() => User, owner => owner.id, { cascade: true })
   @JoinColumn({ name: 'owner_id' })
   owner: User
 

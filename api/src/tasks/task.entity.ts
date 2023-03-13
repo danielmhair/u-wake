@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { Priority } from '../priorities/priority.entity'
 import { Project } from '../projects/project.entity'
 
@@ -19,21 +19,24 @@ export class Task {
   @Column({ type: 'date' })
   due_date: Date;
 
-  @OneToOne(() => Task, task => task.id)
+  @OneToOne(() => Task, task => task.id, {
+    nullable: true,
+    cascade: true,
+  })
   @JoinColumn({ name: 'parent_id' })
   parent: Task
 
-  @Column()
+  @Column({ nullable: true })
   parent_id: number
 
-  @OneToOne(() => Priority, priority => priority.id)
-  @JoinColumn({ name: 'priority_id'})
+  @ManyToOne(() => Priority, priority => priority.id, { nullable: true, cascade: true })
+  @JoinColumn({ name: 'priority_id' })
   priority: Priority
 
-  @Column()
+  @Column({ nullable: true })
   priority_id: number
 
-  @OneToMany(() => Project, project => project.id)
+  @OneToMany(() => Project, project => project.id,  { cascade: true })
   @JoinColumn({ name: 'project_id' })
   project: Project
 

@@ -5,14 +5,14 @@ import { User } from '../users/user.entity'
 
 @Entity({ name: 'labels_tasks' })
 export class LabelTask {
-  @OneToMany(() => Task, task => task.id)
+  @OneToMany(() => Task, task => task.id, { cascade: true })
   @JoinColumn({ name: 'task_id' })
   task: Task
 
   @PrimaryColumn()
   task_id: number
 
-  @OneToMany(() => Label, label => label.id)
+  @OneToMany(() => Label, label => label.id, { cascade: true })
   @JoinColumn({ name: 'label_id' })
   label: Label
 

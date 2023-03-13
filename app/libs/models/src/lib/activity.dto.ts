@@ -1,4 +1,4 @@
-type ActivityType = 'task_created' | 'task_completed' | 'task_modified' | 'comment_created' | 'label_created' | 'label_modified' | 'project_created' | 'project_modified' | ''
+export type ActivityType = 'task_created' | 'task_completed' | 'task_modified' | 'comment_created' | 'label_created' | 'label_modified' | 'project_created' | 'project_modified' | ''
 export class ActivityDto {
   /**
    * This action id is tied to either a task, comment, label or project, depending on the action name
@@ -16,5 +16,5 @@ export class ActivityDto {
    * Project creation: When a user creates a new project, a log entry is created in the activity feed with the project name and creation date.
    * Project modification: When a user modifies a project, a log entry is created in the activity feed with the project name, the old and new project details, and the modification date.
    */
-  public action: ActivityType = ''
+public action: ActivityType = ''
 }

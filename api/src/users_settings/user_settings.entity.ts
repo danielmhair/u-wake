@@ -3,7 +3,7 @@ import { Column, Entity, JoinColumn, OneToMany, PrimaryColumn } from 'typeorm'
 
 @Entity({ name: 'users_settings' })
 export class UserSettings {
-  @OneToMany(() => User, user => user.id)
+  @OneToMany(() => User, user => user.id, { cascade: true })
   @JoinColumn({ name: 'user_id' })
   user: User
 

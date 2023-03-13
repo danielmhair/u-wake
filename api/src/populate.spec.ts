@@ -54,21 +54,19 @@ describe('Postgres DB', () => {
   })
 
   it('should populate users', async () => {
-    await Promise.all([
-      usersService.repo.query('delete from users'),
-      projectsService.repo.query('delete from projects'),
-      projectsService.repo.query('delete from users_projects'),
-      commentsService.repo.query('delete from comments'),
-      labelsService.repo.query('delete from labels'),
-      labelsTasksService.repo.query('delete from labels_tasks'),
-      ownersTasksService.repo.query('delete from owners_tasks'),
-      prioritiesService.repo.query('delete from priorities'),
-      remindersService.repo.query('delete from reminders'),
-      tasksService.repo.query('delete from tasks'),
-      activitiesService.repo.query('delete from tasks_activity'),
-      userFiltersService.repo.query('delete from user_filters'),
-      usersSettingsService.repo.query('delete from users_settings'),
-    ])
+    await usersService.repo.query('delete from users')
+    await projectsService.repo.query('delete from projects')
+    await projectsService.repo.query('delete from users_projects')
+    await commentsService.repo.query('delete from comments')
+    await labelsService.repo.query('delete from labels')
+    await labelsTasksService.repo.query('delete from labels_tasks')
+    await ownersTasksService.repo.query('delete from owners_tasks')
+    await prioritiesService.repo.query('delete from priorities')
+    await remindersService.repo.query('delete from reminders')
+    await tasksService.repo.query('delete from tasks')
+    await activitiesService.repo.query('delete from activities')
+    await userFiltersService.repo.query('delete from user_filters')
+    await usersSettingsService.repo.query('delete from users_settings')
 
     const dan = await usersService.create({ firstName: 'Dan', lastName: 'Hair', email: 'danielmhair@gmail.com' })
     const mark = await usersService.create({ firstName: 'Mark', lastName: 'Mena', email: 'marktavius@gmail.com' })
@@ -92,10 +90,10 @@ describe('Postgres DB', () => {
     const priority2 = await prioritiesService.create({ name: '2', user_id: dan.id })
     const priority3 = await prioritiesService.create({ name: '3', user_id: mark.id })
 
-    const task1 = await tasksService.create({ name: 'Task 1', description: 'new desc', due_date: new Date(), order: 1, parent_id: null, project_id: sharedProject.id, priority_id: priority1.id })
-    const task2 = await tasksService.create({ name: 'Task 2', description: 'new desc', due_date: new Date(), order: 2, parent_id: null, project_id: sharedProject.id, priority_id: priority2.id })
-    const subTask2_1 = await tasksService.create({ name: 'Task 3', description: 'new desc', due_date: new Date(), order: 1, parent_id: task2.id, project_id: sharedProject.id, priority_id: null })
-    const subTask2_2 = await tasksService.create({ name: 'Task 3', description: 'new desc', due_date: new Date(), order: 2, parent_id: task2.id, project_id: sharedProject.id, priority_id: priority3.id })
+    const task1 = await tasksService.create({ name: 'Task 1', description: 'new desc 1', due_date: new Date(), order: 1, parent_id: null, project_id: sharedProject.id, priority_id: null })
+    const task2 = await tasksService.create({ name: 'Task 2', description: 'new desc 2', due_date: new Date(), order: 2, parent_id: null, project_id: sharedProject.id, priority_id: null })
+    const subTask2_1 = await tasksService.create({ name: 'Task 3', description: 'new desc 2', due_date: new Date(), order: 1, parent_id: task2.id, project_id: sharedProject.id, priority_id: null })
+    const subTask2_2 = await tasksService.create({ name: 'Task 4', description: 'new desc 2', due_date: new Date(), order: 2, parent_id: task2.id, project_id: sharedProject.id, priority_id: priority3.id })
 
     await ownersTasksService.create({ task_id: task1.id, owner_id: dan.id })
     await ownersTasksService.create({ task_id: task2.id, owner_id: dan.id })
